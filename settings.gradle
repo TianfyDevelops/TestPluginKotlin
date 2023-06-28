@@ -1,0 +1,27 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == 'com.example.kotlinplugin') {
+                useModule("com.example.kotlinplugin:kotlin-standalone-plugin:${requested.version}")
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+rootProject.name = "TestPluginKotlin"
+include ':app'
+include ':kotlinPlugin'

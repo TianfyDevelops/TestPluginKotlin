@@ -1,0 +1,32 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+def pluginId = 'kotlin-standalone-plugin'
+def pluginImplementationClass = 'com.example.kotlinplugin.KotlinPlugin'
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = pluginId
+            implementationClass = pluginImplementationClass
+        }
+    }
+}
+
+group = 'com.example.kotlinplugin'
+version = '1.1'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifactId = pluginId
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
